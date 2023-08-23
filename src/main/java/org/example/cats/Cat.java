@@ -3,7 +3,7 @@ package org.example.cats;
 public class Cat {
     private int id;
     private String url;
-    private String apiKEY= "live_WnOrPwahsislSmfF6A9OsWap9Fk8CEwoW5W2w5J2oNVn6bmvKsQEignB6ZVCajfn";
+    private String apiKEY;
     private String image;
 
     public Cat(int id, String url, String apiKEY, String image) {
