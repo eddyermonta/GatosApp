@@ -6,7 +6,7 @@ import javax.crypto.SecretKey;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-public class EncryptionUtil {
+public class EncryptionUtility {
     public static SecretKey generateEncryptionKey() throws NoSuchAlgorithmException {
         KeyGenerator keyGen = KeyGenerator.getInstance(ConfigConstants.AES_ALGORITHM);
         keyGen.init(256); // Tamano de la clave en bits

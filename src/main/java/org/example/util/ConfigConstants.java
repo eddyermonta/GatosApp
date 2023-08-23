@@ -11,4 +11,11 @@ public class ConfigConstants {
     public static final String SALIR = "Salir";
     public static final String GATITOS_JAVA = "Gatitos java";
     public static final String MENU_PRINCIPAL = "Menu principal";
+    public static final int MAX_WIDTH_CAT_IMAGEN = 800;
+    public static final int MAX_HEIGHT_CAT_IMAGEN = 600;
+
+    //API
+    public static final String URL_CAT_API = "https://api.thecatapi.com/v1/images/search";
+
+
 }
