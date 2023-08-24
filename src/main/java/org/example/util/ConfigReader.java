@@ -20,7 +20,7 @@ public class ConfigReader {
             properties.load(input);
             value = properties.getProperty(codigo);
         }catch (IOException e){
-            System.out.println(Errors.KEY_ERROR);
+            LoggerUtility.error(Errors.KEY_ERROR);
         }
         return value;
     }

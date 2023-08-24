@@ -39,7 +39,7 @@ public class ImageUtility {
             return createImageIcon(fondoGato);
 
         }catch (IOException e){
-            e.printStackTrace();
+           LoggerUtility.error(Errors.IMAGEN_ERROR);
             return null;
 
         }
