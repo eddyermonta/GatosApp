@@ -13,6 +13,10 @@ public class Cat {
         this.image = image;
     }
 
+    public Cat() {
+
+    }
+
     public String getId() {
         return id;
     }

@@ -27,7 +27,7 @@ public class Main {
             opcionMenu = Arrays.asList(botones).indexOf(opcionElegida);
 
             if (opcionMenu == 0){
-                CatService.verGatos();
+                CatService.menuGatos();
             }
 
         }while (opcionMenu!=1);
