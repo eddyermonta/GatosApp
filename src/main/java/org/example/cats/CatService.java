@@ -1,13 +1,10 @@
 package org.example.cats;
 
-
 import okhttp3.*;
-import org.example.util.ConfigConstants;
-import org.example.util.HttpUtility;
-import org.example.util.ImageUtility;
-import org.example.util.JsonUtility;
+import org.example.util.*;
 import javax.swing.*;
 import java.io.IOException;
+
 
 public class CatService {
     public static void verGatos(){
@@ -19,7 +16,7 @@ public class CatService {
                 ImageIcon fondoGato = ImageUtility.dowloadAndResizeImage(gatos);
             }
         }catch (IOException e){
-            e.printStackTrace();
+           LoggerUtility.error(Errors.HTTP_ERROR);
         }
     }
 }
