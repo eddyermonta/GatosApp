@@ -11,6 +11,7 @@ public class ConfigConstants {
     public static final String SALIR = "Salir";
     public static final String GATITOS_JAVA = "Gatitos java";
     public static final String MENU_PRINCIPAL = "Menu principal";
+    public static final String SELECCIONE = "Seleccione";
     public static final int MAX_WIDTH_CAT_IMAGEN = 800;
     public static final int MAX_HEIGHT_CAT_IMAGEN = 600;
 

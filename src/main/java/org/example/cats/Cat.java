@@ -1,23 +1,23 @@
 package org.example.cats;
 
 public class Cat {
-    private int id;
+    private String id;
     private String url;
     private String apiKEY;
     private String image;
 
-    public Cat(int id, String url, String apiKEY, String image) {
+    public Cat(String id, String url, String apiKEY, String image) {
         this.id = id;
         this.url = url;
         this.apiKEY = apiKEY;
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

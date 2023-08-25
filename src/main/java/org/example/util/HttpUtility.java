@@ -4,7 +4,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class HttpUtility {
 
@@ -13,9 +16,12 @@ public class HttpUtility {
                 .url(url)
                 .get()
                 .build();
-        try (Response response = client.newCall(request).execute()) {
-            return response;
-        }
+        return client.newCall(request).execute();
     }
-
+    public static HttpsURLConnection getHttpConnection(URL imageUrl) throws IOException {
+        HttpsURLConnection httpcon = (HttpsURLConnection) imageUrl.openConnection();
+        httpcon.addRequestProperty("User-Agent","No User-Agent provided");
+        return httpcon;
+    }
 }
+

@@ -14,9 +14,15 @@ public class Main {
         String [] botones = {ConfigConstants.VER_GATOS,ConfigConstants.SALIR};
         do {
 
-            String opcionElegida = (String) JOptionPane.showInputDialog(null,
-                    ConfigConstants.GATITOS_JAVA,ConfigConstants.MENU_PRINCIPAL,
-                    JOptionPane.INFORMATION_MESSAGE,null,botones,botones[0]);
+            String opcionElegida = (String) JOptionPane.showInputDialog(
+                    null,
+                    ConfigConstants.GATITOS_JAVA,
+                    ConfigConstants.MENU_PRINCIPAL,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    botones,
+                    botones[0]
+            );
 
             opcionMenu = Arrays.asList(botones).indexOf(opcionElegida);
 
