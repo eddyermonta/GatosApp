@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class CatService {
-    public static Cat getJSONCat(){
-        OkHttpClient client = new OkHttpClient().newBuilder().build();
-        try( Response response = HttpUtility.sendGetRequest(client, ConfigConstants.URL_CAT_API)){
-            if(response.body() != null){
+    public static  Cat getJSONCat(){
+        try(Response response = HttpUtility.catRequestImage()){
+            if(response.body()!=null){
                 String JSON = response.body().string();
+                LoggerUtility.trace("GATOS IMAGENES\n"+JSON);
+                System.out.println("GATOS IMAGENES\n"+JSON);
                 return JsonUtility.parseJson(JSON,Cat[].class)[0];
             }
         }catch (IOException e){
@@ -22,6 +23,7 @@ public class CatService {
 
     public static Cat getGato(Cat gatos){
         return new Cat(gatos.getId(),
+                gatos.getImage_id(),
                 gatos.getUrl(),
                 gatos.getApiKEY(),
                 gatos.getImage()
@@ -35,7 +37,12 @@ public class CatService {
     public static void menuGatos(){
         Cat gato = getGato(getJSONCat());
         ImageIcon fondoGato = getImageIcon(gato);
-        String [] botones = {"ver otra imagen", "favoritos", "volver"};
+
+        String [] botones = {
+                ConfigConstants.VER_GATOS,
+                ConfigConstants.FAVORITOS,
+                ConfigConstants.SALIR
+        };
 
         String opcionElegida = (String) JOptionPane.showInputDialog(
                 null,
@@ -62,5 +69,21 @@ public class CatService {
     }
 
     private static void favoritoGato(Cat gatos) {
+            Cat gatoFavorito = new Cat(gatos.getId());
+            String json = JsonUtility.Json(gatoFavorito);
+
+            MediaType   jsonMediaType = MediaType.parse(ConfigConstants.APLICATION_JSON);
+            RequestBody body = RequestBody.create(json,jsonMediaType);
+
+            try (Response response  = HttpUtility.catRequestFavorite(body)){
+                if (response.body() != null) {
+                    String jsonResponse = response.body().string();
+                    LoggerUtility.trace("GATOS FAVORITOS\n" + jsonResponse);
+                    System.out.println("GATOS FAVORITOS\n" + jsonResponse);
+                }
+            } catch (IOException e) {
+                LoggerUtility.error(Errors.HTTP_ERROR);
+            }
+
     }
 }

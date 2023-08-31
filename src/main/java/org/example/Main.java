@@ -7,9 +7,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-       //String apikey = ConfigReader.getCode(ConfigConstants.CONFIG_PROPERTIES_DEV,ConfigConstants.API_KEY);
-       //System.out.println(apikey);
-
         int opcionMenu = -1;
         String [] botones = {ConfigConstants.VER_GATOS,ConfigConstants.SALIR};
         do {

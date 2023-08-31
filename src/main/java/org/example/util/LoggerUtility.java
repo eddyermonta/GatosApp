@@ -6,10 +6,6 @@ import com.sun.org.slf4j.internal.LoggerFactory;
 public class LoggerUtility {
     private static final Logger logger = LoggerFactory.getLogger(LoggerUtility.class);
 
-    private LoggerUtility(Class<?> clazz) {
-
-    }
-
     public static void debug(String message) {
         logger.debug(message);
     }

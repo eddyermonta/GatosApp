@@ -13,9 +13,9 @@ public class EncryptionUtility {
         return keyGen.generateKey();
     }
 
-    public static String encrypt(String apiKey, SecretKey key) throws Exception {
+    public static String encrypt(String apiKey) throws Exception {
         Cipher cipher = Cipher.getInstance(ConfigConstants.AES_ALGORITHM);
-        cipher.init(Cipher.ENCRYPT_MODE, key);
+        cipher.init(Cipher.ENCRYPT_MODE, generateEncryptionKey());
         byte[] encryptedBytes = cipher.doFinal(apiKey.getBytes());
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
