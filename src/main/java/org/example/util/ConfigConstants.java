@@ -18,6 +18,7 @@ public class ConfigConstants {
 
     //MENU GATOS
     public static final String FAVORITOS = "Favoritos";
+    public static final String ELIMINAR_FAVORITO = "Eliminar favorito";
 
 
     //http header
@@ -30,5 +31,6 @@ public class ConfigConstants {
     //API
     public static final String URL_CAT_IMAGE = "https://api.thecatapi.com/v1/images/search";
     public static final String URL_CAT_FAVORITES ="https://api.thecatapi.com/v1/favourites";
+    public static final String FAVOURITE_ID ="?favourite_id=";
 
 }

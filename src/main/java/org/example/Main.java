@@ -1,14 +1,15 @@
 package org.example;
 
-import org.example.cats.CatService;
+import org.example.cats.services.CatService;
 import org.example.util.ConfigConstants;
+
 import javax.swing.*;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         int opcionMenu = -1;
-        String [] botones = {ConfigConstants.VER_GATOS,ConfigConstants.SALIR};
+        String [] botones = {ConfigConstants.VER_GATOS,ConfigConstants.FAVORITOS,ConfigConstants.SALIR};
         do {
 
             String opcionElegida = (String) JOptionPane.showInputDialog(
@@ -23,10 +24,17 @@ public class Main {
 
             opcionMenu = Arrays.asList(botones).indexOf(opcionElegida);
 
-            if (opcionMenu == 0){
-                CatService.menuGatos();
+            switch (opcionMenu){
+                case 0:
+                    CatService.menuGatos();
+                    break;
+                case 1:
+                    CatService.menuFavoritos();
+                    break;
+                default:
+                    break;
             }
 
-        }while (opcionMenu!=1);
+        }while (opcionMenu!=2);
     }
 }
