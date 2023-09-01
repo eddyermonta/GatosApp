@@ -6,44 +6,33 @@ public class Cat {
     private String sub_id;
     private  String created_at;
     private CatImage image;
-
-
     public Cat(CatImage image) {
         this.image = image;
     }
-
     public Cat(String image_id) {
         this.image_id = image_id;
     }
-
     public Cat() {
 
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public CatImage getImage() {
         return image;
     }
-
     public void setImage(CatImage image) {
         this.image = image;
     }
-
     public String getImage_id() {
         return image_id;
     }
-
     public void setImage_id(String image_id) {
         this.image_id = image_id;
     }
-
     @Override
     public String toString() {
         return "Cat{" +

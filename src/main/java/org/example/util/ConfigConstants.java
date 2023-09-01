@@ -1,6 +1,7 @@
 package org.example.util;
 
 public class ConfigConstants {
+
     //CONFIGURACION GENERAL
     public static final String API_KEY = "api.key";
     public static final String CONFIG_PROPERTIES_DEV = "configDev.properties";
@@ -31,6 +32,5 @@ public class ConfigConstants {
     //API
     public static final String URL_CAT_IMAGE = "https://api.thecatapi.com/v1/images/search";
     public static final String URL_CAT_FAVORITES ="https://api.thecatapi.com/v1/favourites";
-    public static final String FAVOURITE_ID ="?favourite_id=";
 
 }

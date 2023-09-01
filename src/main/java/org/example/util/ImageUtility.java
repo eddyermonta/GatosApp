@@ -13,32 +13,50 @@ import java.net.URL;
 public class ImageUtility {
     static int maxWidth = ConfigConstants.MAX_WIDTH_CAT_IMAGEN;
     static int maxHeight = ConfigConstants.MAX_HEIGHT_CAT_IMAGEN;
-
+    /**
+     *
+     * @param imageUrl Url of cat
+     * @return Cat image
+     */
     public static Image dowloadImage(String imageUrl) throws IOException {
-        URL url = new URL(imageUrl);
-        HttpsURLConnection httpcon = HttpUtility.getHttpConnection(url);
-        return ImageIO.read(httpcon.getInputStream());
+        HttpsURLConnection https = HttpUtility.getHttpCatImage(new URL(imageUrl));
+        return ImageIO.read(https.getInputStream());
     }
-
+    /**
+     *
+     * @param image cat image
+     * @param maxWidth accepted for app
+     * @param maxHeight accepted for app
+     * @return catimage resized
+     */
     public static Image resizeImage(Image image, int maxWidth, int maxHeight) {
         return image.getScaledInstance(maxWidth, maxHeight, Image.SCALE_SMOOTH);
     }
-
+    /**
+     *
+     * @param image cat image
+     * @return icon of cat image
+     */
     public static ImageIcon createImageIcon(Image image) {
         return new ImageIcon(image);
     }
-
-    public static ImageIcon dowloadAndResizeImage(CatImage gatos){
+    /**
+     *
+     * @param cat catImage object
+     * @return catimage transformed in an icon and resized
+     */
+    public static ImageIcon dowloadAndResizeImage(CatImage cat){
         try{
-            Image imagenOriginal = dowloadImage(gatos.getUrl());
-
-            boolean redimensionar = imagenOriginal.getWidth(null) >maxWidth ||
-                    imagenOriginal.getHeight(null) > maxHeight;
-
+            Image imagenOriginal = dowloadImage(cat.getUrl());
             Image fondoGato = imagenOriginal;
-            if(redimensionar){
-                fondoGato = resizeImage(imagenOriginal,maxWidth,maxHeight);
-            }
+
+            boolean redimensionar =
+                            imagenOriginal.getWidth(null) >maxWidth ||
+                            imagenOriginal.getHeight(null) > maxHeight
+                    ;
+
+            fondoGato = (redimensionar)? resizeImage(imagenOriginal,maxWidth,maxHeight):fondoGato;
+
             return createImageIcon(fondoGato);
 
         }catch (IOException e){
@@ -46,18 +64,23 @@ public class ImageUtility {
             return null;
         }
     }
-
+    /**
+     *
+     * @param gatos cat object
+     * @return cat transformed in an icon and resized
+     */
     public static ImageIcon dowloadAndResizeImage(Cat gatos){
         try{
             Image imagenOriginal = dowloadImage(gatos.getImage().getUrl());
-
-            boolean redimensionar = imagenOriginal.getWidth(null) >maxWidth ||
-                    imagenOriginal.getHeight(null) > maxHeight;
-
             Image fondoGato = imagenOriginal;
-            if(redimensionar){
-                fondoGato = resizeImage(imagenOriginal,maxWidth,maxHeight);
-            }
+
+            boolean redimensionar =
+                    imagenOriginal.getWidth(null) >maxWidth ||
+                    imagenOriginal.getHeight(null) > maxHeight
+                    ;
+
+            fondoGato = (redimensionar)? resizeImage(imagenOriginal,maxWidth,maxHeight):fondoGato;
+
             return createImageIcon(fondoGato);
 
         }catch (IOException e){
